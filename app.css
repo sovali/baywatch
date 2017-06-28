@@ -1,0 +1,11 @@
+.favbutton {
+    position: relative;
+    left: 200px;
+    background-color: yellow;
+}
+
+.delbutton {
+    position: relative;
+    left: 250px;
+    background-color: red;
+}
