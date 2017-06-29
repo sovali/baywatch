@@ -9,6 +9,15 @@ h1 {
     padding-left: 170px;
 
 }
+#up {
+    position: absolute;
+    right: 950px;
+}
+
+#down {
+    position: absolute;
+    right: 900px;
+}
 ul {
     padding-left: 250px;
 }
@@ -18,7 +27,7 @@ li {
 }
 a.button.warning {
     position: absolute;
-    left: 1000px;
+    left: 1020px;
 }
 
 a.button.alert {

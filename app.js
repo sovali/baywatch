@@ -32,6 +32,17 @@ const app = {
     const item = document.createElement('li')
     item.textContent = flick.name
 
+    const upbutton = document.createElement('a')
+    upbutton.textContent = "↑"
+    upbutton.setAttribute("class", "clear button")
+    upbutton.setAttribute("id","up")
+
+    const downbutton = document.createElement('a')
+    downbutton.textContent = "↓"
+    downbutton.setAttribute("class", "clear button")
+    downbutton.setAttribute("id","down")
+
+
     const favbutton = document.createElement('a')
     favbutton.textContent = "add to favorites"
     favbutton.setAttribute("class","button warning")
@@ -45,6 +56,8 @@ const app = {
     delbutton.addEventListener (
         'click', this.handleDel.bind(this)
     )
+    item.appendChild(upbutton)
+    item.appendChild(downbutton)
     item.appendChild(favbutton)
     item.appendChild(delbutton)
     return item
