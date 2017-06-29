@@ -1,11 +1,28 @@
-.favbutton {
-    position: relative;
-    left: 200px;
-    background-color: yellow;
+body {
+    background-image: url(http://thestudioexec.com/wp-content/uploads/2014/01/badd1.jpg);
+    background-repeat:no-repeat;
+    background-position: right-bottom;
+}
+h1 {
+    font-family: Lalezar;
+    color: red;
+    padding-left: 170px;
+
+}
+ul {
+    padding-left: 250px;
+}
+li {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+a.button.warning {
+    position: absolute;
+    left: 1000px;
 }
 
-.delbutton {
-    position: relative;
-    left: 250px;
+a.button.alert {
+    position: absolute;
+    left: 1200px;
     background-color: red;
 }

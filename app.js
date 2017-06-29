@@ -16,7 +16,6 @@ const app = {
   handleFav(ev) {
     const currbutton = ev.target
     const currflick = currbutton.parentElement
-    currflick.style.color = yellow;
   },
 
   handleDel(ev) {
@@ -33,18 +32,16 @@ const app = {
     const item = document.createElement('li')
     item.textContent = flick.name
 
-    const favbutton = document.createElement('button')
+    const favbutton = document.createElement('a')
     favbutton.textContent = "add to favorites"
-    favbutton.setAttribute("class","favbutton")
-    favbutton.setAttribute("id",`f${this.id}`)
+    favbutton.setAttribute("class","button warning")
     favbutton.addEventListener (
         'click', this.handleFav.bind(this)
     )
 
-    const delbutton = document.createElement('button')
+    const delbutton = document.createElement('a')
     delbutton.textContent = "delete"
-    delbutton.setAttribute("class","delbutton")
-    delbutton.setAttribute("id", `d${this.id}`)
+    delbutton.setAttribute("class","button alert")
     delbutton.addEventListener (
         'click', this.handleDel.bind(this)
     )
