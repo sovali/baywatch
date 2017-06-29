@@ -17,7 +17,8 @@ const app = {
     const currbutton = ev.target
     const currflick = currbutton.parentElement
 
-    currflick.style.color = "#d6a81d"   
+    currflick.style.color = "#d6a81d"
+    currflick.fav = true;
   },
 
   handleDel(ev) {
@@ -56,7 +57,7 @@ const app = {
   renderListItem(flick) {
     const item = document.createElement('li')
     item.textContent = flick.name
-    item.dataset.id = item.flick.id;
+    item.dataset = item.id;
 
     const upbutton = document.createElement('a')
     upbutton.textContent = "↑"
@@ -103,15 +104,15 @@ const app = {
     const flick = {
       id: this.max + 1,
       name: f.flickName.value,
+      fav: false,
     }
 
     if (flick.name.length != 0) {
     const listItem = this.renderListItem(flick)
     this.list.appendChild(listItem)
-    this.flicks[flick.id - 1] = flick
-    this.list.insertBefore(listItem, this.list.firstElementChild)
 
-    this.max ++
+    this.flicks.unshift(flick)
+    this.list.insertBefore(listItem, this.list.firstElementChild)
 
     f.reset()
   }
