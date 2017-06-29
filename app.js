@@ -56,6 +56,7 @@ const app = {
   renderListItem(flick) {
     const item = document.createElement('li')
     item.textContent = flick.name
+    item.dataset.id = item.flick.id;
 
     const upbutton = document.createElement('a')
     upbutton.textContent = "↑"
@@ -108,11 +109,12 @@ const app = {
     const listItem = this.renderListItem(flick)
     this.list.appendChild(listItem)
     this.flicks[flick.id - 1] = flick
+    this.list.insertBefore(listItem, this.list.firstElementChild)
 
     this.max ++
 
     f.reset()
-    }
+  }
   },
 }
 
