@@ -16,6 +16,8 @@ const app = {
   handleFav(ev) {
     const currbutton = ev.target
     const currflick = currbutton.parentElement
+
+    currflick.style.color = "#d6a81d"   
   },
 
   handleDel(ev) {
