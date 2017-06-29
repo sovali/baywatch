@@ -104,11 +104,15 @@ const app = {
       name: f.flickName.value,
     }
 
+    if (flick.name.length != 0) {
     const listItem = this.renderListItem(flick)
     this.list.appendChild(listItem)
     this.flicks[flick.id - 1] = flick
 
     this.max ++
+
+    f.reset()
+    }
   },
 }
 
