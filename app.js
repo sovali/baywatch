@@ -17,8 +17,13 @@ const app = {
     const currbutton = ev.target
     const currflick = currbutton.parentElement
 
-    currflick.style.color = "#d6a81d"
-    currflick.fav = true;
+    currflick.fav = !currflick.fav
+
+    if (currflick.fav) {
+      currflick.style.color = "#d6a81d"
+    } else {
+      currflick.style.color = "black"
+    }
   },
 
   handleDel(ev) {
@@ -33,25 +38,37 @@ const app = {
 
   handleUp(ev) {
     const currbutton = ev.target
-    const currflick = currbutton.parentElement
-    const i = this.flicks.indexOf(currflick)
+    const currflick = currbutton.parentElement // list item!
+    const i = this.flicks.findIndex(function(flick) {
+      return (currflick.textContent.match(flick.name))
+    })
+    console.log(i)
+    console.log(currflick)
+    if (i > 0) {
+      const curr = this.flicks[i]
+      const prev = this.flicks[i - 1]
+      this.flicks[i-1] = curr
+      this.flicks[i] = prev
 
-    const prev = this.flicks[i - 1]
-    this.flicks[i-1] = currflick
-    this.flicks[i] = prev
-    
-    
+      this.list.insertBefore(currflick, currflick.previousSibling)
+    }
+
   },
 
   handleDown(ev) {
     const currbutton = ev.target
     const currflick = currbutton.parentElement
-    const i = this.flicks.indexOf(currflick)
+    const i = this.flicks.findIndex(function(flick) {
+      return (currflick.textContent.match(flick.name))
+    })
+    if (i < this.flicks.length-1) {
+      const curr = this.flicks[i]
+      const next = this.flicks[i + 1]
+      this.flicks[i+1] = curr
+      this.flicks[i] = next
 
-    const next = this.flicks[i + 1]
-    this.flicks[i+1] = currflick
-    this.flicks[i] = next
-
+      this.list.insertBefore(currflick, currflick.nextSibling.nextSibling)
+    }
   },
 
   renderListItem(flick) {
@@ -62,7 +79,7 @@ const app = {
     const upbutton = document.createElement('a')
     upbutton.textContent = "↑"
     upbutton.setAttribute("class", "clear button")
-    upbutton.setAttribute("id","up")
+    upbutton.setAttribute("class","up")
      upbutton.addEventListener (
         'click', this.handleUp.bind(this)
     )
@@ -70,7 +87,7 @@ const app = {
     const downbutton = document.createElement('a')
     downbutton.textContent = "↓"
     downbutton.setAttribute("class", "clear button")
-    downbutton.setAttribute("id","down")
+    downbutton.setAttribute("class","down")
     downbutton.addEventListener (
         'click', this.handleDown.bind(this)
     )
