@@ -28,6 +28,29 @@ const app = {
     currflick.parentNode.removeChild(currflick)
   },
 
+  handleUp(ev) {
+    const currbutton = ev.target
+    const currflick = currbutton.parentElement
+    const i = this.flicks.indexOf(currflick)
+
+    const prev = this.flicks[i - 1]
+    this.flicks[i-1] = currflick
+    this.flicks[i] = prev
+    
+    
+  },
+
+  handleDown(ev) {
+    const currbutton = ev.target
+    const currflick = currbutton.parentElement
+    const i = this.flicks.indexOf(currflick)
+
+    const next = this.flicks[i + 1]
+    this.flicks[i+1] = currflick
+    this.flicks[i] = next
+
+  },
+
   renderListItem(flick) {
     const item = document.createElement('li')
     item.textContent = flick.name
@@ -36,11 +59,17 @@ const app = {
     upbutton.textContent = "↑"
     upbutton.setAttribute("class", "clear button")
     upbutton.setAttribute("id","up")
+     upbutton.addEventListener (
+        'click', this.handleUp.bind(this)
+    )
 
     const downbutton = document.createElement('a')
     downbutton.textContent = "↓"
     downbutton.setAttribute("class", "clear button")
     downbutton.setAttribute("id","down")
+    downbutton.addEventListener (
+        'click', this.handleDown.bind(this)
+    )
 
 
     const favbutton = document.createElement('a')
