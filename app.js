@@ -42,8 +42,6 @@ const app = {
     const i = this.flicks.findIndex(function(flick) {
       return (currflick.textContent.match(flick.name))
     })
-    console.log(i)
-    console.log(currflick)
     if (i > 0) {
       const curr = this.flicks[i]
       const prev = this.flicks[i - 1]
@@ -71,10 +69,28 @@ const app = {
     }
   },
 
+  handleEdit(ev) {
+    const currspan = ev.target
+    console.log(currspan)
+    if (currspan.getAttribute("contenteditable") == 'false') {
+      currspan.setAttribute("contenteditable", 'true')
+    } else {
+      currspan.setAttribute("contenteditable", 'false')
+    }
+  },
+
   renderListItem(flick) {
     const item = document.createElement('li')
-    item.textContent = flick.name
+    const sp = document.createElement('span')
+    sp.textContent = `${flick.name}`
+    sp.setAttribute("contenteditable",false)
+    sp.addEventListener(
+      'dblclick',this.handleEdit.bind(this)
+    )
+    item.appendChild(sp)
     item.dataset = item.id;
+    
+
 
     const upbutton = document.createElement('a')
     upbutton.textContent = "↑"
