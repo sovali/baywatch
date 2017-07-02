@@ -1,6 +1,7 @@
 const app = {
   init(selectors) {
     this.flicks = []
+    let currEdit = 0;
     this.max = 0
     this.list = document.querySelector(selectors.listSelector)
 
@@ -71,10 +72,17 @@ const app = {
 
   handleEdit(ev) {
     const currspan = ev.target
-    console.log(currspan)
     if (currspan.getAttribute("contenteditable") == 'false') {
+      const i = this.flicks.findIndex(function(flick) {
+      return (currspan.textContent.match(flick.name))
+    })
+      this.currEdit = i;
       currspan.setAttribute("contenteditable", 'true')
-    } else {
+    } else if(currspan.getAttribute("contenteditable") == 'true') {
+      
+      const newName = currspan.textContent
+      this.flicks[this.currEdit].name = `${newName}`
+      console.log(this.flicks[this.currEdit].name)
       currspan.setAttribute("contenteditable", 'false')
     }
   },
@@ -94,7 +102,7 @@ const app = {
 
     const upbutton = document.createElement('a')
     upbutton.textContent = "↑"
-    upbutton.setAttribute("class", "clear button")
+    upbutton.setAttribute("class", "hollow button")
     upbutton.setAttribute("class","up")
      upbutton.addEventListener (
         'click', this.handleUp.bind(this)
@@ -102,7 +110,7 @@ const app = {
 
     const downbutton = document.createElement('a')
     downbutton.textContent = "↓"
-    downbutton.setAttribute("class", "clear button")
+    downbutton.setAttribute("class", "hollow button")
     downbutton.setAttribute("class","down")
     downbutton.addEventListener (
         'click', this.handleDown.bind(this)

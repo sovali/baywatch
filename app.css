@@ -9,12 +9,12 @@ h1 {
     padding-left: 170px;
 
 }
-#up {
+.up {
     position: absolute;
     right: 950px;
 }
 
-#down {
+.down {
     position: absolute;
     right: 900px;
 }
