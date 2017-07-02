@@ -11,12 +11,12 @@ h1 {
 }
 .up {
     position: absolute;
-    right: 950px;
+    right: 1000px;
 }
 
 .down {
     position: absolute;
-    right: 900px;
+    right: 1050px;
 }
 ul {
     padding-left: 250px;

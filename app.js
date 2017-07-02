@@ -87,6 +87,14 @@ const app = {
     }
   },
 
+  handleSave(ev) {
+
+  },
+
+  handleClearList(ev) {
+
+  },
+
   renderListItem(flick) {
     const item = document.createElement('li')
     const sp = document.createElement('span')
@@ -102,7 +110,7 @@ const app = {
 
     const upbutton = document.createElement('a')
     upbutton.textContent = "↑"
-    upbutton.setAttribute("class", "hollow button")
+    upbutton.setAttribute("class", "button primary")
     upbutton.setAttribute("class","up")
      upbutton.addEventListener (
         'click', this.handleUp.bind(this)
@@ -110,7 +118,7 @@ const app = {
 
     const downbutton = document.createElement('a')
     downbutton.textContent = "↓"
-    downbutton.setAttribute("class", "hollow button")
+    downbutton.setAttribute("class","button primary")
     downbutton.setAttribute("class","down")
     downbutton.addEventListener (
         'click', this.handleDown.bind(this)
@@ -147,6 +155,9 @@ const app = {
       name: f.flickName.value,
       fav: false,
     }
+
+    const clearbutton = document.querySelector('#clearall')
+    console.log(clearbutton);
 
     if (flick.name.length != 0) {
     const listItem = this.renderListItem(flick)
