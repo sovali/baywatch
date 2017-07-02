@@ -12,6 +12,14 @@ const app = {
         this.handleSubmit.bind(this)
       )
 
+    document
+      .querySelector('#clearall')
+      .addEventListener('click', this.handleClearList.bind(this)
+      )
+
+    document
+      .querySelector('#saveall')
+      .addEventListener('click', this.handleSave.bind(this))
   },
 
   handleFav(ev) {
@@ -88,11 +96,11 @@ const app = {
   },
 
   handleSave(ev) {
-
+    console.log("AYAYYYA")
   },
 
   handleClearList(ev) {
-
+    document.getElementById('flick-list').innerHTML = "";
   },
 
   renderListItem(flick) {
@@ -155,9 +163,6 @@ const app = {
       name: f.flickName.value,
       fav: false,
     }
-
-    const clearbutton = document.querySelector('#clearall')
-    console.log(clearbutton);
 
     if (flick.name.length != 0) {
     const listItem = this.renderListItem(flick)
