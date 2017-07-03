@@ -1,6 +1,6 @@
 const app = {
   init(selectors) {
-    this.flicks = []
+    this.flicks = localStorage.getItem('array')
     let currEdit = 0;
     this.max = 0
     this.list = document.querySelector(selectors.listSelector)
@@ -102,10 +102,12 @@ const app = {
 
   handleSave(ev) {
    localStorage.list = JSON.stringify(document.querySelector('#flick-list').innerHTML)
+   localStorage.array = this.flicks;
 },
 
   handleClearList(ev) {
     document.getElementById('flick-list').innerHTML = "";
+    this.flicks = [];
   },
 
 
