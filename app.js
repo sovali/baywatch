@@ -101,16 +101,13 @@ const app = {
 
 
   handleSave(ev) {
-    Storage.prototype.setObject = function(key, value) {
-    this.setItem(key, JSON.stringify(value));
-    }
-  
-    setObject("list", document.querySelector('#flick-list'))
-  },
+   localStorage.list = JSON.stringify(document.querySelector('#flick-list').innerHTML)
+},
 
   handleClearList(ev) {
     document.getElementById('flick-list').innerHTML = "";
   },
+
 
   renderListItem(flick) {
     const item = document.createElement('li')

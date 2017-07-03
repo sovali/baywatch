@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html class="no-js">
   <head>
@@ -12,12 +13,8 @@
   <body onload="startup()">
     <script>
       function startup() {
-        Storage.prototype.getObject = function(key) {
-      return JSON.parse(this.getItem(key));
-      }
-        var load = getObject("list")
         var flick = document.querySelector('#flick-list')
-        flick.appendChild(load)
+        flick.innerHTML = JSON.parse(localStorage.getItem('list'))
       }
       </script>
     <div class="grid-x">
