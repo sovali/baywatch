@@ -20,6 +20,11 @@ const app = {
     document
       .querySelector('#saveall')
       .addEventListener('click', this.handleSave.bind(this))
+
+      document
+      .querySelector('#searchall')
+      .addEventListener('click', this.handleSearch.bind(this))
+
   },
 
   handleFav(ev) {
