@@ -1,8 +1,11 @@
 const app = {
   init(selectors) {
-    this.flicks = localStorage.getItem('array')
-    let currEdit = 0;
-    this.max = 0
+    var data = localStorage.getItem("flicks")
+    if (data) {
+    this.flicks = JSON.parse(data)
+    } else {
+      this.flicks = []
+    }
     this.list = document.querySelector(selectors.listSelector)
 
     document
@@ -14,18 +17,24 @@ const app = {
 
     document
       .querySelector('#clearall')
-      .addEventListener('click', this.handleClearList.bind(this)
+      .addEventListener(
+        'click',
+        this.handleClearList.bind(this)
       )
 
     document
       .querySelector('#saveall')
-      .addEventListener('click', this.handleSave.bind(this))
-
-      document
+      .addEventListener(
+        'click', this.handleSave.bind(this)
+        )
+      
+    document
       .querySelector('#searchall')
-      .addEventListener('click', this.handleSearch.bind(this))
-
-  },
+      .addEventListener(
+        'click', 
+        this.handleSearch.bind(this)
+        )
+},
 
   handleFav(ev) {
     const currbutton = ev.target
@@ -51,7 +60,7 @@ const app = {
   },
 
   handleSearch(ev) {
-
+    console.log("search works")
   },
 
   handleUp(ev) {
@@ -106,13 +115,13 @@ const app = {
 
 
   handleSave(ev) {
-   localStorage.list = JSON.stringify(document.querySelector('#flick-list').innerHTML)
-   localStorage.array = this.flicks;
+   localStorage.setItem('list', JSON.stringify(document.querySelector('#flick-list').innerHTML))
+   localStorage.setItem('flicks',JSON.stringify(this.flicks))
 },
 
   handleClearList(ev) {
-    document.getElementById('flick-list').innerHTML = "";
-    this.flicks = [];
+    document.getElementById('flick-list').innerHTML = ""
+    this.flicks = []
   },
 
 
@@ -172,7 +181,6 @@ const app = {
     ev.preventDefault()
     const f = ev.target
     const flick = {
-      id: this.max + 1,
       name: f.flickName.value,
       fav: false,
     }
