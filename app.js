@@ -45,6 +45,10 @@ const app = {
     currflick.parentNode.removeChild(currflick)
   },
 
+  handleSearch(ev) {
+
+  },
+
   handleUp(ev) {
     const currbutton = ev.target
     const currflick = currbutton.parentElement // list item!
@@ -95,8 +99,13 @@ const app = {
     }
   },
 
+
   handleSave(ev) {
-    console.log("AYAYYYA")
+    Storage.prototype.setObject = function(key, value) {
+    this.setItem(key, JSON.stringify(value));
+    }
+  
+    setObject("list", document.querySelector('#flick-list'))
   },
 
   handleClearList(ev) {
@@ -135,14 +144,14 @@ const app = {
 
     const favbutton = document.createElement('a')
     favbutton.textContent = "add to favorites"
-    favbutton.setAttribute("class","button warning")
+    favbutton.setAttribute("class","button warning fav")
     favbutton.addEventListener (
         'click', this.handleFav.bind(this)
     )
 
     const delbutton = document.createElement('a')
     delbutton.textContent = "delete"
-    delbutton.setAttribute("class","button alert")
+    delbutton.setAttribute("class","button alert del")
     delbutton.addEventListener (
         'click', this.handleDel.bind(this)
     )

@@ -25,13 +25,12 @@ li {
     padding-top: 10px;
     padding-bottom: 10px;
 }
-a.button.warning {
+.fav {
     position: absolute;
     left: 1020px;
 }
 
-a.button.alert {
+.del {
     position: absolute;
     left: 1200px;
-    background-color: red;
 }
